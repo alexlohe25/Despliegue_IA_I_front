@@ -1,0 +1,173 @@
+
+.container-general {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container-general .container-above {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../src/assets/imgbackground.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    
+  }
+  
+  
+  .container-above .card-general-container {
+    height: 95%;
+    width: 80%;
+    background: #607EAA;
+    border-radius: 30px;
+    box-shadow: 1px 10px 37px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 10px 37px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 10px 37px -3px rgba(0,0,0,0.75);
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .card-general-container .title {
+    height: calc(100%/3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .card-general-container h1{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffff;
+    font-weight: 800;
+    font-size: 40px;
+  }
+  
+  
+  .card-general-container .input-section {
+    height: calc(100%/3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .card-general-container .input-section .subtitle-input-section {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  
+  }
+  .card-general-container .input-section .input-component-container {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #btn-random {
+    margin-top: 10px;
+    height: 50px;
+    width: 55px;
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+    background: #1C3879;
+    color: #ffff;
+    border-radius: 3px;
+    padding: 0;
+    border:none;
+    transition: all 0.1s ease-out;
+    box-shadow: 1px 10px 16px -12px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 10px 16px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 10px 16px -12px rgba(0,0,0,0.75);
+  }
+  
+  #btn-random:hover {
+  
+    transform: scale(1.1) rotate(-10deg);
+  }
+  
+  
+  
+  .card-general-container .buton-container {
+    height: calc(100%/3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #btn-predict {
+  
+    height: 60px;
+    width: 230px;
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+    background: #1C3879;
+    color: #ffff;
+    border-radius: 10px;
+    padding: 0;
+    border:none;
+    transition: all 0.2s ease-out;
+    box-shadow: 1px 10px 16px -12px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 10px 16px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 10px 16px -12px rgba(0,0,0,0.75);
+    
+  
+  }
+  
+  #btn-predict .containe-btn-predict {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+  }
+  
+  #btn-predict:hover {
+    transform: scale(1.1);
+  
+  }
+  
+  .container-general .container-footer {
+    background: #EAE3D2;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+  }
+  
+  #link-to-kaggle {
+    text-decoration: none;
+  }
+  

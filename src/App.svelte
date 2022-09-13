@@ -1,55 +1,23 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import TextBox from './lib/TextBox.svelte';
+
+  import Router from "svelte-spa-router"
+  import Home from "./routes/Home.svelte"; 
+  import NotFound from "./routes/NotFound.svelte";
+  // @ts-ignore
+  import Results from "./routes/Results.svelte";
+
+ 
+
+  let routes = {
+    "/":Home,
+    "/results": Results,
+    "*": NotFound
+  }
 </script>
 
 <main>
-  <div class="container-general">
-    <div class="container-above">
-      <div class="card-general-container">
 
-        <div class="title">
-          <h1> American Express Customer Default Prediction </h1>
-        </div>
+  <Router {routes} />
 
-        <div class="input-section">
-          <div class="subtitle-input-section">
-            <p> Select a customer: </p>
-          </div>
-          <div class="input-component-container">
-              <TextBox/>
-            <button id="btn-random" >
-              <i class="material-icons" style="font-size: 35px;" id="btn-dice">casino</i>
-            </button>
-          </div>
-        </div>
-        <div class="buton-container">
-          <button id="btn-predict">
-              <div class="containe-btn-predict">
-
-              Predict
-              <i class="material-icons" style="font-size: 45px;"> pages </i>
-            </div>
-
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="container-footer">
-      <p>
-        Model: Neural network with 3 hiden layers from Scikit-learn MLP Model using ReLu as activaction function and Adam algorithm as solver.
-      </p>
-      <p>
-        Dataset from: 
-        <a href="https://www.kaggle.com/competitions/amex-default-prediction/overview"
-          id="link-to-kaggle">
-          https://www.kaggle.com/competitions/amex-default-prediction/overview
-        </a> 
-      </p>
-    </div>
-  </div>
+  
 </main>
-
-<style>
-
-</style>
