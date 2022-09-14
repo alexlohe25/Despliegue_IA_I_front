@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../src/assets/imgbackground.jpg"); /* The image used */
+    background-image: url("../../public/assets/imgbackground.jpg"); /* The image used */
     background-color: #cccccc; /* Used if the image is unavailable */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
