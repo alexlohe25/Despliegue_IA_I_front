@@ -1,7 +1,26 @@
 <script>
-
+    
+    import { BarLoader, Wave } from 'svelte-loading-spinners'
+    import { onMount } from 'svelte';
     import css from './../styles/Results.css'
+    export let params = {};
 
+    let arrayResult = [];
+    let loading = true;
+
+    onMount(async () => {
+        fetch(`http://ec2-44-209-10-17.compute-1.amazonaws.com:8080/id/${params.id}`)
+        .then(response => response.json())
+        .then(data => {
+            arrayResult = data;
+            loading = false;
+            console.log("Target_calculated: "+arrayResult['target_calculated'])
+            console.log("Original target: "+arrayResult['target'])
+        }).catch(error => {
+            console.log(error);
+            return [];
+        });
+    });
 </script>
 
 <main>
@@ -25,11 +44,26 @@
                         <i id="icon_user" class="material-icons">account_circle</i>
                     </div>
                     <div class="test-id-results">
-                        <p> 00000469ba478561f23a92a868bd366de6f6527a684c9a2e78fb8 </p>
+                        <p> {params.id} </p>
                     </div>
                     <div class="state-results">
-                        <div class="state-results-tick">  </div>
-                        <p> Approved </p>
+
+                        { #if arrayResult['target_calculated'] == 1 }
+                            <div class="state-results-tick">  </div>
+                            <p> Approved </p>
+                        {/if }
+
+                        {#if arrayResult['target_calculated'] == 0 }
+                            <div class="state-results-cross">  </div>
+                            <p> Denied </p>
+                        {/if}
+
+                        { #if loading != false}
+                            <BarLoader size="200" color="#3054C5"></BarLoader>
+                            
+                        {/if }
+
+                       
 
                     </div>
                 </div>
@@ -39,30 +73,31 @@
                 <div class="show-results-title">
                     <p> Customer Data Summary </p>
                 </div>
-                <div class="show-results-summary-table">
+                <div class={ `show-results-summary-${ (loading != true)?'table':'' }` }>
+                    { #if loading != false}
+                    <Wave size="100" color="#EB5027"></Wave>
+                    {/if }
                     <table class="show-results-table">
                         <thead class="show-results-table-head">
                             <tr>
-                                <th>B_1</th>
-                                <th>B_2</th>
-                                <th>B_3</th>
-                                <th>B_4</th>
-                                <th>B_5</th>
-                                <th>B_6</th>
-                                <th>B_7</th>
-                                <th>B_8</th>
+                                { #if loading != true}
+                                    {#each arrayResult['columns'] as columnm, index }
+                                        <th> col_{index +1} </th>
+                                    {/each}
+                                {/if }
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="show-results-table-body-td">0.11</td>
-                                <td class="show-results-table-body-td">0.11</td>
-                                <td class="show-results-table-body-td">0.11</td>
-                                <td class="show-results-table-body-td">0.11</td>
-                                <td class="show-results-table-body-td">0.11</td>
-                                <td class="show-results-table-body-td">0.11</td>
-                                <td class="show-results-table-body-td">0.11</td>
-                                <td class="show-results-table-body-td">0.11</td>
+                                {#if loading != true}
+                                    {#each arrayResult['data'] as data }
+                                        
+                                        <td class="show-results-table-body-td">{ Number(data).toFixed(4) }</td>
+
+                                    {/each}
+                                    
+                                {/if}
+                                
 
                             </tr>
                         </tbody>

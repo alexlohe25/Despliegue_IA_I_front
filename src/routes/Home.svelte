@@ -1,12 +1,30 @@
 <script>
 
-    import TextBox from './../lib/TextBox.svelte';
-    import Router, { push } from "svelte-spa-router"
+    import { push } from "svelte-spa-router"
     import css from './../styles/Home.css'
+
+    let idRandom = "";
+    function getValue( event ){
+      idRandom = event.target.value
+
+    }
     
+    let data = {
+      randomId: ""
+    };
+
+    async function getRandomId(){
+      const response = await fetch('http://ec2-44-209-10-17.compute-1.amazonaws.com:8080/random_customer');
+      const idRandomFetch = await response.json();
+      data = {
+        randomId: idRandomFetch.randomCustomer,
+      } 
+      idRandom = data.randomId;
+    }
+
     const go_to = () => {
-        push("/Results");
-  }
+        push("/Results/"+idRandom);
+    }
 </script>
 
 <main>
@@ -20,11 +38,11 @@
     
             <div class="input-section">
               <div class="subtitle-input-section">
-                <p> Select a customer: </p>
+                <p> Introduce an ID: </p>
               </div>
               <div class="input-component-container">
-                  <TextBox/>
-                <button id="btn-random" >
+                  <input id="txtInput" bind:value={idRandom} type="text" placeholder="customer id" on:input={ (e) => getValue(e) }>
+                <button id="btn-random" on:click={ getRandomId }>
                   <i class="material-icons" style="font-size: 35px;" id="btn-dice">casino</i>
                 </button>
               </div>
@@ -55,3 +73,20 @@
         </div>
       </div>
 </main>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,600;1,700&display=swap');
+
+#txtInput{
+    height: 50px;
+    width: 89%;
+    padding: 3px;
+    font-family: 'Montserrat', sans-serif;
+    color: #595353;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 5px;
+    border-style: none;
+    margin-top: 10px;
+}
+</style>

@@ -1,4 +1,5 @@
 <script>
+    export let stringID;
 
     function getValue( event ){
         console.log( event.target.value );
@@ -6,7 +7,7 @@
 </script>
 
 
-<input id="txtInput" type="text" on:input={ (e) => getValue(e) }>
+<input id="txtInput" bind:value={stringID} type="text" placeholder="customer id" on:input={ (e) => getValue(e) }>
 
 
 <style>

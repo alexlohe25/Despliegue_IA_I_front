@@ -172,12 +172,9 @@
 .card-general-container-results .show-results-section .show-results-summary-table {
     height: 70%;
     width: 100%;
-    /* background: pink; */
-    display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
     border: 0;
+    overflow-x: scroll;
 }
 
 
@@ -203,6 +200,8 @@
     font-weight: 300;
     border-left: .5px solid #fff;
     border-right: .5px solid #fff;
+    min-width: 100px;
+
 }
 
 .show-results-summary-table .show-results-table tbody{

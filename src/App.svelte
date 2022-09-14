@@ -10,7 +10,7 @@
 
   let routes = {
     "/":Home,
-    "/results": Results,
+    "/results/:id": Results,
     "*": NotFound
   }
 </script>
