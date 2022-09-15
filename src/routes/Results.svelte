@@ -48,14 +48,14 @@
                     </div>
                     <div class="state-results">
 
-                        { #if arrayResult['target_calculated'] == 1 }
+                        { #if arrayResult['target_calculated'] == 0 }
                             <div class="state-results-tick">  </div>
-                            <p> Approved </p>
+                            <p> Sí paga </p>
                         {/if }
 
-                        {#if arrayResult['target_calculated'] == 0 }
+                        {#if arrayResult['target_calculated'] == 1 }
                             <div class="state-results-cross">  </div>
-                            <p> Denied </p>
+                            <p> No paga </p>
                         {/if}
 
                         { #if loading != false}
